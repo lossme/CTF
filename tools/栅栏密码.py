@@ -24,9 +24,13 @@ class Fence():
         )
 
 
-if __name__ == '__main__':
+def test():
     message = "tn c0afsiwal kes,hwit1r  g,npt  ttessfu}ua u  hmqik e {m,  n huiouosarwCniibecesnren."
     fence_numbers = Fence.get_fence_numbers(message)
     for fence_number in fence_numbers:
         r = Fence.decode(message, fence_number)
         print("fence_number={}: {}".format(fence_number, r))
+
+
+if __name__ == '__main__':
+    test()

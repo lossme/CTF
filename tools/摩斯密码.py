@@ -64,7 +64,7 @@ class Morse():
         )
 
 
-if __name__ == '__main__':
+def test():
     message = "i love aylin"
 
     r = Morse.encode(message)
@@ -72,3 +72,7 @@ if __name__ == '__main__':
 
     r = Morse.decode(r)
     print("明文: {}".format(r))
+
+
+if __name__ == '__main__':
+    test()

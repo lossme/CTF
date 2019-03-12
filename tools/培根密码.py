@@ -54,7 +54,7 @@ class Bacon():
         )
 
 
-if __name__ == '__main__':
+def test():
     bacon = Bacon(a="A", b="B", cipher=1)
     message = "ABABA ABBAB BAABB AABAA"
 
@@ -63,3 +63,7 @@ if __name__ == '__main__':
 
     r = bacon.encode(r)
     print("密文: {}".format(r))
+
+
+if __name__ == '__main__':
+    test()

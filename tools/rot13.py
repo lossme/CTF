@@ -13,7 +13,7 @@ class Rot13():
     decode = encode
 
 
-if __name__ == '__main__':
+def test():
     message = "ABC xyz"
 
     r = Rot13.encode(message)
@@ -21,3 +21,7 @@ if __name__ == '__main__':
 
     r = Rot13.decode(r)
     print("明文: {}".format(r))
+
+
+if __name__ == '__main__':
+    test()

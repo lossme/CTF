@@ -20,7 +20,7 @@ class Func():
         return "".join(map(lambda x: self.DECODE_MAP.get(x, " "), s))
 
 
-if __name__ == '__main__':
+def test():
     func = Func(a=5, b=8)
 
     message = "offensive time tomorrow morning at ten o'clock"
@@ -29,3 +29,7 @@ if __name__ == '__main__':
 
     r = func.decode(r)
     print("明文: {}".format(r))
+
+
+if __name__ == '__main__':
+    test()
