@@ -27,7 +27,7 @@ class Func():
         )
 
 
-if __name__ == '__main__':
+def test():
     message = "".join(
         str(ord(i)) for i in "CTF"
     )
@@ -41,4 +41,8 @@ if __name__ == '__main__':
     message = "".join(
         chr(int(r[idx:idx + 2])) for idx in range(0, len(r), 2)
     )
-    print(message)
+    print("message: {}".format(message))
+
+
+if __name__ == '__main__':
+    test()

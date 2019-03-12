@@ -52,7 +52,9 @@ class Morse():
     @classmethod
     def decode(cls, message, sep=None):
         return "".join(
-            map(lambda x: cls.DECODE_MAP.get(x, "*"), message.split(sep))
+            map(
+                lambda x: cls.DECODE_MAP.get(x, x), message.split(sep)
+            )
         )
 
     @classmethod
@@ -60,7 +62,9 @@ class Morse():
         s = message.upper()
         s = cls.BLANK_PATTERN.sub("", s)
         return " ".join(
-            map(lambda x: cls.ENCODE_MAP.get(x, ""), s)
+            map(
+                lambda x: cls.ENCODE_MAP.get(x, x), s
+            )
         )
 
 

@@ -13,11 +13,19 @@ class Func():
 
     def encode(self, message):
         s = message.upper()
-        return "".join(map(lambda x: self.ENCODE_MAP.get(x, " "), s))
+        return "".join(
+            map(
+                lambda x: self.ENCODE_MAP.get(x, x), s
+            )
+        )
 
     def decode(self, message):
         s = message.upper()
-        return "".join(map(lambda x: self.DECODE_MAP.get(x, " "), s))
+        return "".join(
+            map(
+                lambda x: self.DECODE_MAP.get(x, x), s
+            )
+        )
 
 
 def test():

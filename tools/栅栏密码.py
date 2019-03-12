@@ -26,6 +26,7 @@ class Fence():
 
 def test():
     message = "tn c0afsiwal kes,hwit1r  g,npt  ttessfu}ua u  hmqik e {m,  n huiouosarwCniibecesnren."
+    print("message: {}".format(message))
     fence_numbers = Fence.get_fence_numbers(message)
     for fence_number in fence_numbers:
         r = Fence.decode(message, fence_number)
