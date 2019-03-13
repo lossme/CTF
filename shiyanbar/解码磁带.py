@@ -1,9 +1,13 @@
-# 解码磁带
+"""
+原题 解码磁带 http://www.shiyanbar.com/ctf/1891
+"""
 
-[解码磁带](http://www.shiyanbar.com/ctf/1891)
 
-```python
-message = """o____o_
+def decode(message):
+    return "".join(chr(int(i.replace("o", "1").replace("_", "0"), base=2)) for i in message.split())
+
+
+s = """o____o_
 oo__o_o
 oo_o__o
 oo_o_o_
@@ -13,19 +17,14 @@ oo__ooo
 _o_ooo_
 """
 
-
-def decode(message):
-    return "".join(chr(int(i.replace("o", "1").replace("_", "0"), base=2)) for i in message.split())
-
-
-result = decode(message)
+result = decode(s)
 print(result)
 # Beijing.
-```
 
 
-```python
-message = """o_o_ooo
+# -----------------------
+
+s2 = """o_o_ooo
 oo_o___
 oo__o_o
 ooo__o_
@@ -64,8 +63,7 @@ oooo__o
 _o_ooo_
 """
 
-result = decode(message)
+result = decode(s2)
 
 print("simCTF{%s}" % result)
 # simCTF{Where there is a will,there is a way.}
-```
