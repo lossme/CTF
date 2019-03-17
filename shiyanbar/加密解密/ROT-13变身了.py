@@ -16,13 +16,22 @@ print(message)
 # ------------------------------------
 # math.pow(81450625, 1/4) = 95 应该是所有可见字符组成
 # md5爆破
+# python 1s 50w左右
 
 import itertools
 import string
 import hashlib
+import datetime
 
-for item in itertools.product(*[string.printable for i in range(4)]):
+
+ds = datetime.datetime.now()
+print("{}: running".format(ds))
+
+for iter_times, item in enumerate(itertools.product(*[string.printable for i in range(4)])):
     s = "flag{www_shiyanbar_com_is_very_good_%s%s%s%s}" % item
     if hashlib.md5(s.encode()).hexdigest() == "38e4c352809e150186920aac37190cbc":
-        print(s)
+        dn = datetime.datetime.now()
+        print("{}: done".format(dn))
+        print("result={}".format(s))
+        print("iter_times={} 耗时: {} s".format(iter_times, (dn - ds).seconds))
         break
