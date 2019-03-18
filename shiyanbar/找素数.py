@@ -5,6 +5,7 @@
 """
 
 import itertools
+import gmpy2
 
 
 def generate_numbers():
@@ -13,7 +14,7 @@ def generate_numbers():
         yield n, 367 + 186 * (n - 1)
 
 
-def is_susu(number):
+def is_prime(number):
     for i in range(2, number // 2):
         if number % i == 0:
             return False
@@ -25,7 +26,7 @@ if __name__ == '__main__':
     count = 0
     for _ in range(1000):
         n, an = next(g)
-        if is_susu(an):
+        if gmpy2.is_prime(an):
             count += 1
             if count == 151:
                 print(n, an)
