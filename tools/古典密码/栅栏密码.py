@@ -1,4 +1,11 @@
-e = "KYsd3js2E{a2jda}"
+import itertools
+
+
+def grouper(iterable, n, fillvalue=None):
+    "Collect data into fixed-length chunks or blocks"
+    # grouper('ABCDEFG', 3, 'x') --> ABC DEF Gxx"
+    args = [iter(iterable)] * n
+    return itertools.zip_longest(*args, fillvalue=fillvalue)
 
 
 class Fence():
@@ -10,18 +17,16 @@ class Fence():
 
     @staticmethod
     def encode(message, fence_number):
-        pass
-
-    @staticmethod
-    def decode(message, fence_number):
         chunk_len = len(message) // fence_number
-        data = [message[i * chunk_len:(i + 1) * chunk_len] for i in range(fence_number)]
+        data = ["".join(i) for i in grouper(message, chunk_len, fillvalue=" ")]
 
         return "".join(
             data[row][col]
             for col in range(chunk_len)
             for row in range(fence_number)
         )
+
+    decode = encode
 
 
 def test():
