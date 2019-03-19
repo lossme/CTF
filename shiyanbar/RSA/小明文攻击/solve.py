@@ -1,0 +1,36 @@
+"""
+适用情况：e较小，一般为3。
+公钥e很小，明文m也不大的话，于是m^e=k*n+m 中的的k值很小甚至为0，爆破k或直接开三次方即可。
+
+"""
+import gmpy2
+from Crypto.Util.number import getPrime
+
+# p = getPrime(1024)
+# q = getPrime(1024)
+p = 97754344327829384635943590818517268455551710131451797844290117652029820842245465712737223253926776943981130332373578170253986725019872088864428615232193720438538924127864509594274061749955879031730607798239328337921112271045884082598462060357718674470323006528921485943644060638578954023437744021586497930439
+
+q = 147827224552694863017659247965522804920777447282904804068131993869716452323572593705530151421589585237096077734506521025210800653769017259552194971116434379957766737647211722043037882119324567477568526689002389472285945506733777490067871174221127425455249027978208566439797047871375379993862872075436648322453
+
+p = gmpy2.mpz(p)
+q = gmpy2.mpz(q)
+e = gmpy2.mpz(3)
+n = p * q
+phin = (p - 1) * (q - 1)
+d = gmpy2.invert(e, phin)
+
+plantext = "flag_is_e_too_little"
+plantext_code = int.from_bytes(plantext.encode(), "big")
+cipher = gmpy2.powmod(plantext_code, e, n)
+
+
+def small_msg(e, n, c):
+    for i in range(200000000):
+        if gmpy2.iroot(c + n * i, e)[1] == 1:
+            return gmpy2.iroot(c + n * i, 3)[0]
+
+
+plantext_code_decrypt = small_msg(e, n, cipher)
+plantext_code_decrypt = int(plantext_code_decrypt)
+plantext_decrypt = plantext_code_decrypt.to_bytes(plantext_code_decrypt.bit_length() // 8 + 1, "big")
+print(plantext_decrypt)
