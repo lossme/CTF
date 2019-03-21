@@ -28,7 +28,7 @@ cipher = gmpy2.powmod(plantext_code, e, n)
 def small_msg(e, n, c):
     for i in range(200000000):
         if gmpy2.iroot(c + n * i, e)[1] == 1:
-            return gmpy2.iroot(c + n * i, 3)[0]
+            return gmpy2.iroot(c + n * i, e)[0]
 
 
 plantext_code_decrypt = small_msg(e, n, cipher)
