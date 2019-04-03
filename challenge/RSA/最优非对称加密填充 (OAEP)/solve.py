@@ -45,7 +45,6 @@ def main1():
 
     # 解密
     privatekey = RSA.importKey(open('private.pem').read())
-    oaep = PKCS1_OAEP.new(privatekey)
 
     with open('flag.enc', 'rb') as f:
         print(privatekey.decrypt(f.read()))

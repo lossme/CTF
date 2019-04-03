@@ -57,6 +57,7 @@ def decode(item1, item2):
     plain_code = int(plain_code)
     return plain_code.to_bytes(plain_code.bit_length() // 8 + 1, "big")
 
+
 if __name__ == '__main__':
     item_list = parse_file("data/data.txt")
     for item1, item2 in find_e1_e2_prime(item_list):
