@@ -55,6 +55,10 @@ error_g1_plaintext = plaintext_decode_error[:16]
 g1_plaintext = plaintext_grouped[0]
 new_iv = bytes([iv[i] ^ error_g1_plaintext[i] ^ g1_plaintext[i] for i in range(16)])
 
+# _iv = list(iv)
+# _iv[offset] = _iv[offset] ^ plaintext_grouped[1][offset] ^ ord("a")
+# new_iv = bytes(_iv)
+
 session.cookies["iv"] = encode(new_iv)
 r3 = session.get(url)
 print(r3.text)
